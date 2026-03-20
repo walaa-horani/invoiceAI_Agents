@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { ArrowLeft, Download, Mail, CheckCircle2 } from 'lucide-react';
+import { ArrowLeft, Download, Mail, CheckCircle2, CreditCard } from 'lucide-react';
 import Link from 'next/link';
 import { insforge } from '@/lib/insforge';
 import { Invoice } from '@/lib/types';
@@ -13,6 +13,7 @@ export function InvoiceActions({ invoiceId }: { invoiceId: string }) {
   const [marked, setMarked] = useState(false);
   const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
+  const [paying, setPaying] = useState(false);
 
   useEffect(() => {
     insforge.database
@@ -71,6 +72,27 @@ export function InvoiceActions({ invoiceId }: { invoiceId: string }) {
     }
   };
 
+  const handlePayOnline = async () => {
+    setPaying(true);
+    try {
+      const res = await fetch('/api/stripe/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ invoiceId }),
+      });
+      const data = await res.json();
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        console.error('[pay-online]', data.error);
+      }
+    } catch (e) {
+      console.error('[pay-online]', e);
+    } finally {
+      setPaying(false);
+    }
+  };
+
   const isPaid = marked || invoice?.status === 'paid';
   const hasClient = !!invoice?.clients;
 
@@ -111,6 +133,18 @@ export function InvoiceActions({ invoiceId }: { invoiceId: string }) {
             : <Mail className="w-5 h-5" />}
           {sent ? 'Email Sent!' : sending ? 'Sending…' : 'Send via Email'}
         </button>
+
+        {/* Pay Online via Stripe */}
+        {!isPaid && (
+          <button
+            onClick={handlePayOnline}
+            disabled={paying}
+            className="px-5 py-2.5 bg-[#635BFF] text-white font-semibold rounded-lg flex items-center gap-2 hover:opacity-90 transition-opacity text-sm disabled:opacity-60 shadow-lg shadow-[#635BFF]/10"
+          >
+            <CreditCard className="w-5 h-5 text-white/60" />
+            {paying ? 'Redirecting…' : 'Pay Online'}
+          </button>
+        )}
 
         {/* Mark as Paid — also triggers receipt email */}
         <button
