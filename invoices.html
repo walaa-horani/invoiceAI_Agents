@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Invoices | FinAtelier</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#df5402",
+                        "primary-container": "#ffdbcc",
+                        "on-primary": "#ffffff",
+                        "on-primary-container": "#4a1800",
+                        "secondary": "#76574a",
+                        "on-secondary": "#ffffff",
+                        "secondary-container": "#ffdbcc",
+                        "on-secondary-container": "#2c150c",
+                        "tertiary": "#665f31",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#eee4a9",
+                        "on-tertiary-container": "#201c00",
+                        "surface": "#fffbff",
+                        "on-surface": "#201a18",
+                        "surface-variant": "#f4ded4",
+                        "on-surface-variant": "#52443d",
+                        "background": "#fffbff",
+                        "on-background": "#201a18",
+                        "outline": "#85736b",
+                        "outline-variant": "#d7c2b9",
+                        "error": "#ba1a1a",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-error-container": "#410002",
+                        "inverse-surface": "#362f2c",
+                        "inverse-on-surface": "#fbeeeb",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-low": "#fff1ed",
+                        "surface-container": "#fce9e3",
+                        "surface-container-high": "#f6e3dc",
+                        "surface-container-highest": "#f1ded6"
+                    },
+                    fontFamily: {
+                        "headline": ["Manrope", "sans-serif"],
+                        "body": ["Manrope", "sans-serif"],
+                        "label": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: { 
+                        "DEFAULT": "0.5rem", 
+                        "lg": "0.5rem", 
+                        "xl": "0.5rem", 
+                        "full": "9999px" 
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Manrope', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased">
+<aside class="h-screen w-64 fixed left-0 top-0 border-r-0 bg-[#1e1a18] flex flex-col py-6 shadow-2xl z-50">
+<div class="px-6 mb-8">
+<h1 class="text-2xl font-extrabold tracking-tighter text-white font-headline">FinAtelier</h1>
+<p class="text-xs text-[#85736b] font-medium tracking-tight">Premium Billing</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-[#d7c2b9] hover:text-white transition-colors hover:bg-white/5 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-sm font-medium tracking-tight">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-white bg-primary/20 border-r-4 border-primary translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="text-sm font-medium tracking-tight">Invoices</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#d7c2b9] hover:text-white transition-colors hover:bg-white/5 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="text-sm font-medium tracking-tight">Clients</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#d7c2b9] hover:text-white transition-colors hover:bg-white/5 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="text-sm font-medium tracking-tight">Settings</span>
+</a>
+</nav>
+<div class="px-4 mt-auto">
+<button class="w-full flex items-center justify-center gap-2 bg-primary text-white py-3 rounded-lg font-bold shadow-lg hover:brightness-110 transition-all active:scale-95">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+<span class="text-sm">Create Invoice</span>
+</button>
+<div class="mt-6 flex items-center gap-3 px-2">
+<img alt="User Profile Avatar" class="w-8 h-8 rounded-full bg-[#52443d]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6PFQZFT7xH69Hznu8mx3kZ7igyO2GvqcNst1HRPZS_nk04SqsWY9LW8qZGnj8H9QOaRIqq1UA5NjPlCUJOY1qSA-Mh0Sl6ZXz5WcdHa34u3gXPbAszehSIJuXEqo6rkeaDTHp6TwO1qyh_zM7hqg4ty6DdVTR054q2HAAC5GpCD-wLc2bjjodq5zK65L_aE19shM6BOCLWIfff-z0w7Y-26H4gnB7DO8rY_2-b9EeJuLOwj9IpN3lfJD3b_U8ezinik1tQ2oj8rY"/>
+<div class="overflow-hidden">
+<p class="text-sm font-bold text-white truncate">Julian Vane</p>
+<p class="text-xs text-[#85736b] truncate">Pro Account</p>
+</div>
+</div>
+</div>
+</aside>
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] h-16 z-40 bg-surface/80 backdrop-blur-md flex justify-between items-center px-8 ml-64 border-b border-outline-variant/20">
+<div class="flex items-center flex-1 max-w-md">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-lg" data-icon="search">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-low border-none rounded-lg text-sm focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all" placeholder="Search invoices, clients, or amounts..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="text-on-surface-variant hover:text-on-surface transition-colors flex items-center gap-1 text-sm font-bold">
+<span class="material-symbols-outlined text-xl" data-icon="help_outline">help_outline</span>
+            Support
+        </button>
+<button class="relative text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-2xl" data-icon="notifications">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-primary rounded-full border-2 border-surface"></span>
+</button>
+<div class="w-px h-6 bg-outline-variant"></div>
+<img alt="User Profile" class="w-8 h-8 rounded-lg bg-primary-container border border-primary/10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmZhplyLwxMEWB9cmjLSGFH5GP_Xu5WWhJu_P8H9ZdbsES0f45QtHO606e7hZxlgqP7sj6w_HX2rV4DiopxKtlNps0oZaKEdg4WVlnMddhm4e0GouWBZzYJwYSrkepzAWYBYG6gtG4nWiASRwsaCS3dp_PUexhue8mcMy0u4Bf0h0BuJYnMVAn-QlT-L6cWz31gPiaP56SDkSSWO1GpjuAPo_KEg9EWBey1vCawW4angnfox0g1WVt3cw5w5OVW5_h68mm6m1Lf_s"/>
+</div>
+</header>
+<main class="ml-64 pt-24 px-8 pb-12 min-h-screen">
+<div class="flex flex-col gap-8">
+<header class="flex justify-between items-end">
+<div>
+<h2 class="text-3xl font-extrabold tracking-tight text-on-surface font-headline">Invoices</h2>
+<p class="text-on-surface-variant font-medium mt-1">Manage and track your professional billing</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 px-4 py-2 bg-surface-container-high text-on-surface font-bold rounded-lg hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="filter_list">filter_list</span>
+                    Filters
+                </button>
+<button class="flex items-center gap-2 px-4 py-2 bg-surface-container-high text-on-surface font-bold rounded-lg hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="download">download</span>
+                    Export
+                </button>
+</div>
+</header>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-surface-container-lowest p-6 rounded-lg shadow-sm border border-outline-variant/30">
+<p class="text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-2">Total Outstanding</p>
+<h3 class="text-4xl font-extrabold font-headline text-primary tracking-tighter">$42,850.00</h3>
+<div class="mt-4 flex items-center gap-2 text-xs font-bold text-on-tertiary-container bg-tertiary-container px-2 py-1 rounded w-fit">
+<span class="material-symbols-outlined text-sm" data-icon="trending_up">trending_up</span>
+                    +12.5% from last month
+                </div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-lg shadow-sm border border-outline-variant/30">
+<p class="text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-2">Paid this Month</p>
+<h3 class="text-4xl font-extrabold font-headline text-on-surface tracking-tighter">$18,200.00</h3>
+<div class="mt-4 flex items-center gap-2 text-xs font-bold text-on-secondary-container bg-secondary-container px-2 py-1 rounded w-fit">
+<span class="material-symbols-outlined text-sm" data-icon="check_circle">check_circle</span>
+                    24 Invoices Cleared
+                </div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-lg shadow-sm border border-outline-variant/30">
+<p class="text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-2">Overdue Notices</p>
+<h3 class="text-4xl font-extrabold font-headline text-error tracking-tighter">04</h3>
+<div class="mt-4 flex items-center gap-2 text-xs font-bold text-on-error-container bg-error-container px-2 py-1 rounded w-fit">
+<span class="material-symbols-outlined text-sm" data-icon="warning">warning</span>
+                    Requires Attention
+                </div>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-lg overflow-hidden border border-outline-variant/30">
+<div class="bg-surface-container-lowest">
+<table class="w-full text-left">
+<thead>
+<tr class="text-on-surface-variant font-bold text-xs uppercase tracking-widest border-b border-outline-variant/30">
+<th class="py-5 px-6">Invoice #</th>
+<th class="py-5 px-6">Client Name</th>
+<th class="py-5 px-6">Due Date</th>
+<th class="py-5 px-6">Status</th>
+<th class="py-5 px-6 text-right">Amount</th>
+<th class="py-5 px-6 text-center">Actions</th>
+</tr>
+</thead>
+<tbody class="text-sm">
+<tr class="group hover:bg-surface-container-low transition-colors border-b border-outline-variant/10">
+<td class="py-5 px-6 font-bold text-on-surface-variant">#INV-8802</td>
+<td class="py-5 px-6">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-surface-container-high flex items-center justify-center font-bold text-primary text-xs">AA</div>
+<span class="font-bold text-on-surface">Acme Agency</span>
+</div>
+</td>
+<td class="py-5 px-6 text-on-surface-variant">Oct 24, 2023</td>
+<td class="py-5 px-6">
+<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-secondary-container text-on-secondary-container">Paid</span>
+</td>
+<td class="py-5 px-6 text-right font-bold text-on-surface">$12,450.00</td>
+<td class="py-5 px-6">
+<div class="flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:bg-surface-container-highest rounded-lg text-primary transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="visibility">visibility</span>
+</button>
+<button class="p-2 hover:bg-surface-container-highest rounded-lg text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="edit">edit</span>
+</button>
+<button class="p-2 hover:bg-error-container rounded-lg text-error transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="delete">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<tr class="group hover:bg-surface-container-low transition-colors border-b border-outline-variant/10">
+<td class="py-5 px-6 font-bold text-on-surface-variant">#INV-8805</td>
+<td class="py-5 px-6">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-surface-container-high flex items-center justify-center font-bold text-primary text-xs">SL</div>
+<span class="font-bold text-on-surface">Stellar Labs</span>
+</div>
+</td>
+<td class="py-5 px-6 text-on-surface-variant">Nov 02, 2023</td>
+<td class="py-5 px-6">
+<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-tertiary-container text-on-tertiary-container">Pending</span>
+</td>
+<td class="py-5 px-6 text-right font-bold text-on-surface">$3,200.00</td>
+<td class="py-5 px-6">
+<div class="flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:bg-surface-container-highest rounded-lg text-primary transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="visibility">visibility</span>
+</button>
+<button class="p-2 hover:bg-surface-container-highest rounded-lg text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="edit">edit</span>
+</button>
+<button class="p-2 hover:bg-error-container rounded-lg text-error transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="delete">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<tr class="group hover:bg-surface-container-low transition-colors border-b border-outline-variant/10">
+<td class="py-5 px-6 font-bold text-on-surface-variant">#INV-8798</td>
+<td class="py-5 px-6">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-surface-container-high flex items-center justify-center font-bold text-primary text-xs">GF</div>
+<span class="font-bold text-on-surface">Global Freight</span>
+</div>
+</td>
+<td class="py-5 px-6 text-on-surface-variant">Oct 15, 2023</td>
+<td class="py-5 px-6">
+<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-error-container text-on-error-container">Overdue</span>
+</td>
+<td class="py-5 px-6 text-right font-bold text-on-surface">$8,900.00</td>
+<td class="py-5 px-6">
+<div class="flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:bg-surface-container-highest rounded-lg text-primary transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="visibility">visibility</span>
+</button>
+<button class="p-2 hover:bg-surface-container-highest rounded-lg text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="edit">edit</span>
+</button>
+<button class="p-2 hover:bg-error-container rounded-lg text-error transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="delete">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<tr class="group hover:bg-surface-container-low transition-colors rounded-xl">
+<td class="py-5 px-6 font-bold text-on-surface-variant">#INV-8810</td>
+<td class="py-5 px-6">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-surface-container-high flex items-center justify-center font-bold text-primary text-xs">TP</div>
+<span class="font-bold text-on-surface">Techno Pulse</span>
+</div>
+</td>
+<td class="py-5 px-6 text-on-surface-variant">Nov 18, 2023</td>
+<td class="py-5 px-6">
+<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-tertiary-container text-on-tertiary-container">Pending</span>
+</td>
+<td class="py-5 px-6 text-right font-bold text-on-surface">$5,620.00</td>
+<td class="py-5 px-6">
+<div class="flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:bg-surface-container-highest rounded-lg text-primary transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="visibility">visibility</span>
+</button>
+<button class="p-2 hover:bg-surface-container-highest rounded-lg text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="edit">edit</span>
+</button>
+<button class="p-2 hover:bg-error-container rounded-lg text-error transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="delete">delete</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-6 flex items-center justify-between bg-surface-container-lowest border-t border-outline-variant/30">
+<p class="text-xs text-on-surface-variant font-bold">Showing 1 to 4 of 128 invoices</p>
+<div class="flex items-center gap-2">
+<button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-surface-container-high text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg bg-primary text-white font-bold text-xs">1</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-surface-container-high text-on-surface-variant font-bold text-xs transition-colors">2</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-surface-container-high text-on-surface-variant font-bold text-xs transition-colors">3</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-surface-container-high text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<div class="fixed bottom-8 right-8 z-50">
+<button class="group flex items-center gap-3 bg-inverse-surface text-white pl-4 pr-6 py-4 rounded-full shadow-2xl hover:scale-105 active:scale-95 transition-all">
+<span class="material-symbols-outlined bg-primary p-2 rounded-full" data-icon="bolt" style="font-variation-settings: 'FILL' 1;">bolt</span>
+<span class="font-bold text-sm tracking-tight">Quick Actions</span>
+</button>
+</div>
+</body></html>

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "inverse-primary": "#ffb598",
+                        "secondary-container": "#fc9a73",
+                        "on-error": "#ffffff",
+                        "surface-variant": "#f7ddd4",
+                        "outline-variant": "#e2bfb2",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#00497a",
+                        "error": "#ba1a1a",
+                        "secondary-fixed-dim": "#ffb599",
+                        "surface-dim": "#eed5cb",
+                        "tertiary-container": "#0079c4",
+                        "tertiary": "#005f9d",
+                        "on-surface": "#261913",
+                        "on-background": "#261913",
+                        "outline": "#8e7166",
+                        "on-error-container": "#93000a",
+                        "secondary": "#954827",
+                        "on-primary-fixed": "#370e00",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-high": "#fde3d9",
+                        "surface-container-highest": "#f7ddd4",
+                        "on-tertiary-container": "#fdfcff",
+                        "on-secondary-fixed": "#370e00",
+                        "inverse-surface": "#3c2d27",
+                        "primary": "#a13a00",
+                        "on-primary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-low": "#fff1ec",
+                        "on-secondary": "#ffffff",
+                        "surface-tint": "#a53c00",
+                        "background": "#fff8f6",
+                        "on-secondary-fixed-variant": "#773212",
+                        "on-secondary-container": "#753011",
+                        "surface-bright": "#fff8f6",
+                        "primary-fixed-dim": "#ffb598",
+                        "on-primary-container": "#fffbff",
+                        "on-surface-variant": "#5a4138",
+                        "on-primary-fixed-variant": "#7e2c00",
+                        "on-tertiary-fixed": "#001d35",
+                        "primary-container": "#ca4b00",
+                        "secondary-fixed": "#ffdbce",
+                        "inverse-on-surface": "#ffede7",
+                        "surface": "#fff8f6",
+                        "surface-container": "#ffe9e1",
+                        "primary-fixed": "#ffdbce",
+                        "tertiary-fixed": "#d0e4ff",
+                        "tertiary-fixed-dim": "#9ccaff"
+                    },
+                    fontFamily: {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        @media print {
+            .no-print { display: none !important; }
+            .print-only { display: block !important; }
+            body { background: white !important; }
+            .invoice-card { box-shadow: none !important; border: 1px solid #e2bfb2 !important; }
+        }
+    </style>
+</head>
+<body class="bg-background font-body text-on-background antialiased">
+<!-- Sidebar Navigation -->
+<aside class="bg-slate-900 dark:bg-black h-screen w-64 fixed left-0 top-0 border-r border-slate-800 shadow-xl flex flex-col p-4 no-print">
+<div class="mb-10 px-4">
+<h1 class="text-xl font-black text-white font-headline">Invoicer</h1>
+<p class="text-xs text-slate-400 font-medium">SaaS Dashboard</p>
+</div>
+<nav class="flex-1 flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-white transition-colors hover:bg-slate-800 font-manrope text-sm font-medium rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 bg-orange-600 text-white rounded-lg transition-colors font-manrope text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+                Invoices
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-white transition-colors hover:bg-slate-800 font-manrope text-sm font-medium rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+                Clients
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-white transition-colors hover:bg-slate-800 font-manrope text-sm font-medium rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+                Settings
+            </a>
+</nav>
+<div class="mt-auto pt-6 border-t border-slate-800">
+<button class="w-full bg-orange-600 text-white py-3 rounded-lg font-bold text-sm flex items-center justify-center gap-2 active:scale-95 duration-150">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+                Create Invoice
+            </button>
+</div>
+</aside>
+<!-- Top Navigation -->
+<header class="fixed top-0 right-0 left-64 h-16 border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md flex justify-between items-center px-8 z-10 no-print">
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-slate-400 text-lg">search</span>
+<input class="bg-slate-100 dark:bg-slate-800 border-none rounded-full py-2 pl-10 pr-4 text-sm w-64 focus:ring-2 focus:ring-primary" placeholder="Search invoices..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="text-slate-500 dark:text-slate-400 hover:text-orange-500 transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="text-slate-500 dark:text-slate-400 hover:text-orange-500 transition-colors">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-primary-container overflow-hidden">
+<img alt="User Avatar" class="h-full w-full object-cover" data-alt="Professional user profile headshot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAluvXZVrVH9Z-rEsZk-8PpNaKSdfCB0B1tYgTXXfNlmcF74-x3wBw2Qne7ce0S8r1xunw7q5wLLltu8NhOt2D2EEFbFSe9OrMgVBJjh4sbuiYQXoL4qvlRbvZnD_MGg4Rs-gmaswkm-v5fyNvvVB4H6CULmDu5_QBM5nXbYItZHELus6-52DbQX13cnKzUYpC_nrntJgqlfBz33EeCKjTgB2k0sO4AQ46ZLRSPFi8JPHiEj2eEXcxz4sXTA5kWGUbcC9WGMnOY1ok"/>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="ml-64 pt-24 pb-12 px-8 min-h-screen">
+<!-- Action Header -->
+<div class="max-w-4xl mx-auto mb-8 flex justify-between items-end no-print">
+<div>
+<a class="text-primary font-medium flex items-center gap-2 mb-2 text-sm" href="#">
+<span class="material-symbols-outlined text-sm">arrow_back</span>
+                    Back to Invoices
+                </a>
+<h2 class="text-3xl font-headline font-extrabold text-on-surface">Invoice #INV-2024-001</h2>
+</div>
+<div class="flex gap-3">
+<button class="px-5 py-2.5 bg-surface-container border border-outline-variant text-on-surface-variant font-semibold rounded-lg flex items-center gap-2 hover:bg-surface-variant transition-colors text-sm" onclick="window.print()">
+<span class="material-symbols-outlined text-lg">download</span>
+                    Download PDF
+                </button>
+<button class="px-5 py-2.5 bg-surface-container border border-outline-variant text-on-surface-variant font-semibold rounded-lg flex items-center gap-2 hover:bg-surface-variant transition-colors text-sm">
+<span class="material-symbols-outlined text-lg">mail</span>
+                    Send via Email
+                </button>
+<button class="px-5 py-2.5 bg-primary text-on-primary font-semibold rounded-lg flex items-center gap-2 hover:opacity-90 transition-opacity text-sm">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                    Mark as Paid
+                </button>
+</div>
+</div>
+<!-- Invoice Card -->
+<article class="max-w-4xl mx-auto bg-white shadow-2xl rounded-xl overflow-hidden invoice-card">
+<!-- Invoice Top Gradient Stripe -->
+<div class="h-2 bg-gradient-to-r from-primary via-secondary to-tertiary"></div>
+<div class="p-12">
+<!-- Header: Logo & Meta -->
+<div class="flex justify-between items-start mb-16">
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 bg-primary rounded-xl flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+</div>
+<div>
+<h3 class="text-2xl font-headline font-black text-on-surface tracking-tight">Lumina Ledger</h3>
+<p class="text-on-surface-variant text-sm">Professional Financial Services</p>
+</div>
+</div>
+<div class="text-right">
+<div class="inline-block px-3 py-1 bg-surface-container-high text-on-surface-variant rounded-full text-xs font-bold uppercase tracking-wider mb-4">Unpaid</div>
+<div class="space-y-1">
+<p class="text-sm text-on-surface-variant">Invoice Date: <span class="text-on-surface font-semibold">May 12, 2024</span></p>
+<p class="text-sm text-on-surface-variant">Due Date: <span class="text-on-surface font-semibold">June 12, 2024</span></p>
+</div>
+</div>
+</div>
+<!-- Billing Grid -->
+<div class="grid grid-cols-2 gap-12 mb-16">
+<div>
+<h4 class="text-xs font-bold text-primary uppercase tracking-widest mb-4">Billed From</h4>
+<div class="text-on-surface space-y-1">
+<p class="font-bold text-lg">Lumina Ledger Inc.</p>
+<p class="text-on-surface-variant">123 Business Avenue, Suite 500</p>
+<p class="text-on-surface-variant">San Francisco, CA 94107</p>
+<p class="text-on-surface-variant">billing@luminaledger.com</p>
+<p class="text-on-surface-variant">+1 (555) 123-4567</p>
+</div>
+</div>
+<div>
+<h4 class="text-xs font-bold text-tertiary uppercase tracking-widest mb-4">Billed To</h4>
+<div class="text-on-surface space-y-1">
+<p class="font-bold text-lg">Stellar Dynamics Co.</p>
+<p class="text-on-surface-variant">456 Innovation Drive</p>
+<p class="text-on-surface-variant">Austin, TX 78701</p>
+<p class="text-on-surface-variant">accounts@stellardynamics.com</p>
+<p class="text-on-surface-variant">ATTN: Sarah Jenkins</p>
+</div>
+</div>
+</div>
+<!-- Line Items Table -->
+<div class="mb-12">
+<table class="w-full">
+<thead>
+<tr class="border-b border-outline-variant">
+<th class="text-left py-4 text-xs font-bold text-on-surface-variant uppercase tracking-widest w-12">#</th>
+<th class="text-left py-4 text-xs font-bold text-on-surface-variant uppercase tracking-widest">Description</th>
+<th class="text-right py-4 text-xs font-bold text-on-surface-variant uppercase tracking-widest">Rate</th>
+<th class="text-right py-4 text-xs font-bold text-on-surface-variant uppercase tracking-widest">Qty</th>
+<th class="text-right py-4 text-xs font-bold text-on-surface-variant uppercase tracking-widest">Amount</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-highest">
+<tr>
+<td class="py-6 text-on-surface-variant align-top">01</td>
+<td class="py-6 align-top">
+<p class="font-bold text-on-surface">Brand Strategy Workshop</p>
+<p class="text-sm text-on-surface-variant mt-1">Full-day deep dive into brand positioning and visual identity system.</p>
+</td>
+<td class="py-6 text-right text-on-surface align-top">$2,500.00</td>
+<td class="py-6 text-right text-on-surface align-top">1</td>
+<td class="py-6 text-right font-bold text-on-surface align-top">$2,500.00</td>
+</tr>
+<tr>
+<td class="py-6 text-on-surface-variant align-top">02</td>
+<td class="py-6 align-top">
+<p class="font-bold text-on-surface">UI/UX Design - Dashboard</p>
+<p class="text-sm text-on-surface-variant mt-1">Design of main admin panel, statistics view, and user management screens.</p>
+</td>
+<td class="py-6 text-right text-on-surface align-top">$150.00</td>
+<td class="py-6 text-right text-on-surface align-top">40</td>
+<td class="py-6 text-right font-bold text-on-surface align-top">$6,000.00</td>
+</tr>
+<tr>
+<td class="py-6 text-on-surface-variant align-top">03</td>
+<td class="py-6 align-top">
+<p class="font-bold text-on-surface">Asset Illustration Kit</p>
+<p class="text-sm text-on-surface-variant mt-1">Custom icon set and 3D illustrations for marketing website.</p>
+</td>
+<td class="py-6 text-right text-on-surface align-top">$1,200.00</td>
+<td class="py-6 text-right text-on-surface align-top">1</td>
+<td class="py-6 text-right font-bold text-on-surface align-top">$1,200.00</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Summary Grid -->
+<div class="flex justify-end">
+<div class="w-full max-w-xs space-y-3">
+<div class="flex justify-between text-sm text-on-surface-variant">
+<span>Subtotal</span>
+<span class="font-semibold text-on-surface">$9,700.00</span>
+</div>
+<div class="flex justify-between text-sm text-on-surface-variant">
+<span>Tax (8.5%)</span>
+<span class="font-semibold text-on-surface">$824.50</span>
+</div>
+<div class="flex justify-between text-sm text-on-surface-variant">
+<span>Discount (10%)</span>
+<span class="font-semibold text-error">-$970.00</span>
+</div>
+<div class="pt-4 mt-2 border-t border-outline-variant flex justify-between">
+<span class="text-lg font-bold text-on-surface">Total Due</span>
+<span class="text-2xl font-black text-primary">$9,554.50</span>
+</div>
+</div>
+</div>
+<!-- Footer Notes -->
+<div class="mt-20 pt-12 border-t border-surface-container-highest grid grid-cols-2 gap-12">
+<div>
+<h4 class="text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-3">Payment Instructions</h4>
+<div class="text-sm text-on-surface-variant space-y-1">
+<p>Bank: Global Trust Bank</p>
+<p>Account Name: Lumina Ledger Inc.</p>
+<p>Account Number: **** 5678 9012</p>
+<p>SWIFT/BIC: GLTRUS33XXX</p>
+</div>
+</div>
+<div class="text-right flex flex-col justify-end">
+<p class="text-xs text-on-surface-variant italic">Thank you for your business. We look forward to continuing our partnership.</p>
+</div>
+</div>
+</div>
+<!-- Pattern Bottom -->
+<div class="h-16 bg-surface-container-low flex items-center px-12 justify-center opacity-50">
+<div class="flex gap-8">
+<div class="h-1 w-24 bg-primary/20 rounded-full"></div>
+<div class="h-1 w-12 bg-secondary/20 rounded-full"></div>
+<div class="h-1 w-32 bg-tertiary/20 rounded-full"></div>
+</div>
+</div>
+</article>
+<!-- Floating Action Button (for mobile experience reference) -->
+<button class="md:hidden fixed bottom-6 right-6 h-14 w-14 bg-primary text-on-primary rounded-full shadow-2xl flex items-center justify-center no-print">
+<span class="material-symbols-outlined">print</span>
+</button>
+</main>
+</body></html>

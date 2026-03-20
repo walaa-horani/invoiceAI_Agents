@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Clients | Lumina Ledger</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#df5402",
+                        "primary-container": "#ffdbcc",
+                        "on-primary": "#ffffff",
+                        "on-primary-container": "#4a1800",
+                        "secondary": "#765849",
+                        "secondary-container": "#ffdbcb",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-container": "#2c160b",
+                        "tertiary": "#666034",
+                        "tertiary-container": "#eee4ad",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-container": "#201c00",
+                        "surface": "#fffbff",
+                        "on-surface": "#201a17",
+                        "surface-variant": "#f4ded3",
+                        "on-surface-variant": "#52443c",
+                        "outline": "#85736b",
+                        "background": "#fffbff",
+                        "on-background": "#201a17",
+                        "surface-container-low": "#fef1eb",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-high": "#f8e6de",
+                        "surface-container-highest": "#f2dbd2",
+                    },
+                    fontFamily: {
+                        "headline": ["Manrope", "sans-serif"],
+                        "body": ["Manrope", "sans-serif"],
+                        "label": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "0.5rem",
+                        "xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body { font-family: 'Manrope', sans-serif; }
+        h1, h2, h3, .font-headline { font-family: 'Manrope', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased">
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 border-r border-surface-container-highest bg-on-surface text-surface-container-lowest shadow-2xl z-50 flex flex-col py-6">
+<div class="px-6 mb-10">
+<h1 class="text-2xl font-bold tracking-tighter text-white">Lumina Ledger</h1>
+<p class="text-[10px] uppercase tracking-[0.2em] text-outline-variant/60 font-medium">Enterprise Suite</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-6 py-3 text-surface-variant/70 hover:text-white transition-colors hover:bg-white/5" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-sm font-medium tracking-tight">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-surface-variant/70 hover:text-white transition-colors hover:bg-white/5" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="text-sm font-medium tracking-tight">Invoices</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-white bg-primary/20 border-r-4 border-primary translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="group" style="font-variation-settings: 'FILL' 1;">group</span>
+<span class="text-sm font-medium tracking-tight">Clients</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-surface-variant/70 hover:text-white transition-colors hover:bg-white/5" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="text-sm font-medium tracking-tight">Settings</span>
+</a>
+</nav>
+<div class="px-4 mt-auto">
+<button class="w-full bg-primary hover:bg-primary/90 text-white py-3 rounded-lg flex items-center justify-center gap-2 transition-all shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+<span class="text-sm font-bold">Create Invoice</span>
+</button>
+</div>
+</aside>
+<!-- TopAppBar -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] h-16 z-40 bg-surface/80 backdrop-blur-md border-b border-surface-container-highest flex justify-between items-center px-8">
+<div class="flex items-center gap-4 bg-surface-container-low px-4 py-2 rounded-lg w-96 border border-surface-container-highest transition-all focus-within:ring-2 focus-within:ring-primary/20">
+<span class="material-symbols-outlined text-outline" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-full placeholder:text-outline/60" placeholder="Search clients or transactions..." type="text"/>
+</div>
+<div class="flex items-center gap-6">
+<button class="text-on-surface-variant hover:text-primary transition-colors text-sm font-medium">Support</button>
+<div class="relative">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors" data-icon="notifications">notifications</span>
+<span class="absolute -top-1 -right-1 w-2 h-2 bg-primary rounded-full"></span>
+</div>
+<div class="flex items-center gap-3 pl-6 border-l border-surface-container-highest">
+<div class="text-right hidden sm:block">
+<p class="text-xs font-bold text-on-surface">Alex Vesper</p>
+<p class="text-[10px] text-on-surface-variant">Creative Director</p>
+</div>
+<img class="w-8 h-8 rounded-full object-cover border border-surface-container-highest" data-alt="User Profile Portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcx2Oob9INGNyWCvVrjynSyJMz56UGnRlWeAe_m_oOvSo91s2VpLYTmv07RWie7vbVcLbmGtLBdW5AMNOfxicx68PUxQlWo-Kgys0IYGOoF8Kt0c7OopLpnMuCGulwYWM8JMKQyEMa2PQpYcC2ZDK8xy6eRi87yehPbf8ZjpzdD_i9a1USdlzOG5KUCjfnP5sqa-gutYC0EdIFvYv8EUX5CUHnkf3f9mkwGkEC07yU3MPiWtPM8C_FBMMsy3YQgpHc31dRcGGH2Lk"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-24 px-12 pb-12 min-h-screen">
+<!-- Header Section -->
+<div class="flex justify-between items-end mb-12">
+<div>
+<h2 class="text-4xl font-extrabold tracking-tight text-on-surface mb-2">Clients</h2>
+<p class="text-on-surface-variant font-medium">Manage your professional relationships and revenue streams.</p>
+</div>
+<button class="bg-primary text-white px-6 py-3 rounded-lg flex items-center gap-2 hover:bg-primary/90 hover:scale-[1.02] transition-all shadow-xl shadow-primary/15" onclick="document.getElementById('new-client-modal').classList.remove('hidden')">
+<span class="material-symbols-outlined" data-icon="person_add">person_add</span>
+<span class="font-bold text-sm">Add New Client</span>
+</button>
+</div>
+<!-- Stats Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+<div class="bg-surface-container-low p-6 rounded-xl border border-surface-container-highest">
+<p class="text-on-surface-variant text-xs font-bold uppercase tracking-widest mb-4">Total Clients</p>
+<div class="flex items-baseline gap-2">
+<span class="text-4xl font-extrabold">128</span>
+<span class="text-primary text-xs font-bold bg-primary-container px-2 py-0.5 rounded-full">+12%</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-6 rounded-xl border border-surface-container-highest">
+<p class="text-on-surface-variant text-xs font-bold uppercase tracking-widest mb-4">Active Contracts</p>
+<div class="flex items-baseline gap-2">
+<span class="text-4xl font-extrabold">42</span>
+<span class="text-on-secondary-container text-xs font-bold bg-secondary-container px-2 py-0.5 rounded-full">Stable</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-6 rounded-xl border border-surface-container-highest">
+<p class="text-on-surface-variant text-xs font-bold uppercase tracking-widest mb-4">Avg. Lifetime Value</p>
+<div class="flex items-baseline gap-2">
+<span class="text-4xl font-extrabold">$14.2k</span>
+</div>
+</div>
+</div>
+<!-- Client Table -->
+<div class="bg-surface border border-surface-container-highest rounded-xl overflow-hidden shadow-sm">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low">
+<th class="px-8 py-5 text-[10px] uppercase tracking-[0.15em] font-bold text-on-surface-variant">Client Detail</th>
+<th class="px-8 py-5 text-[10px] uppercase tracking-[0.15em] font-bold text-on-surface-variant">Contact Email</th>
+<th class="px-8 py-5 text-[10px] uppercase tracking-[0.15em] font-bold text-on-surface-variant">Billing Address</th>
+<th class="px-8 py-5 text-[10px] uppercase tracking-[0.15em] font-bold text-on-surface-variant text-right">Total Revenue</th>
+<th class="px-8 py-5 text-[10px] uppercase tracking-[0.15em] font-bold text-on-surface-variant text-center">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-highest">
+<!-- Row 1 -->
+<tr class="group hover:bg-surface-container-low transition-colors">
+<td class="px-8 py-6">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary font-bold">AL</div>
+<div>
+<p class="font-bold text-on-surface">Aetheria Labs</p>
+<p class="text-xs text-on-surface-variant">Client ID: #CL-9021</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-6 text-sm text-on-surface-variant font-medium">billing@aetheria.io</td>
+<td class="px-8 py-6 text-sm text-on-surface-variant max-w-xs truncate">742 Evergreen Terrace, San Francisco, CA</td>
+<td class="px-8 py-6 text-right font-bold text-primary">$45,200.00</td>
+<td class="px-8 py-6 text-center">
+<button class="p-2 hover:bg-primary-container rounded-lg transition-colors text-outline hover:text-primary">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="group hover:bg-surface-container-low transition-colors">
+<td class="px-8 py-6">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-secondary-container/50 flex items-center justify-center text-secondary font-bold">NS</div>
+<div>
+<p class="font-bold text-on-surface">Nova Systems</p>
+<p class="text-xs text-on-surface-variant">Client ID: #CL-8842</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-6 text-sm text-on-surface-variant font-medium">finance@nova.com</td>
+<td class="px-8 py-6 text-sm text-on-surface-variant max-w-xs truncate">Level 42, Sky Tower, New York, NY</td>
+<td class="px-8 py-6 text-right font-bold text-primary">$128,950.00</td>
+<td class="px-8 py-6 text-center">
+<button class="p-2 hover:bg-primary-container rounded-lg transition-colors text-outline hover:text-primary">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="group hover:bg-surface-container-low transition-colors">
+<td class="px-8 py-6">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-tertiary-container/50 flex items-center justify-center text-tertiary font-bold">VE</div>
+<div>
+<p class="font-bold text-on-surface">Veloce Estates</p>
+<p class="text-xs text-on-surface-variant">Client ID: #CL-7710</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-6 text-sm text-on-surface-variant font-medium">hello@veloce.design</td>
+<td class="px-8 py-6 text-sm text-on-surface-variant max-w-xs truncate">10-12 Rue de Rivoli, Paris, FR</td>
+<td class="px-8 py-6 text-right font-bold text-primary">$12,400.00</td>
+<td class="px-8 py-6 text-center">
+<button class="p-2 hover:bg-primary-container rounded-lg transition-colors text-outline hover:text-primary">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="px-8 py-6 flex items-center justify-between border-t border-surface-container-highest">
+<p class="text-xs text-on-surface-variant font-medium">Showing 1 to 3 of 128 clients</p>
+<div class="flex gap-2">
+<button class="px-4 py-2 text-xs font-bold bg-surface-container-low text-on-surface-variant border border-surface-container-highest rounded-lg hover:bg-surface-container-high transition-colors">Previous</button>
+<button class="px-4 py-2 text-xs font-bold bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors shadow-sm">Next</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Modal -->
+<div class="hidden fixed inset-0 z-[60] flex items-center justify-center bg-on-surface/40 backdrop-blur-sm" id="new-client-modal">
+<div class="bg-surface rounded-xl shadow-2xl w-full max-w-xl mx-4 overflow-hidden border border-surface-container-highest">
+<div class="px-8 py-6 flex justify-between items-center border-b border-surface-container-highest">
+<h3 class="text-xl font-extrabold">Register New Client</h3>
+<button class="text-on-surface-variant hover:text-on-surface" onclick="document.getElementById('new-client-modal').classList.add('hidden')">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+</div>
+<form class="p-8 space-y-6">
+<div class="grid grid-cols-1 gap-6">
+<div>
+<label class="block text-[10px] uppercase tracking-widest font-bold text-on-surface-variant mb-2">Full Client Name / Entity</label>
+<input class="w-full bg-surface-container-low border border-surface-container-highest rounded-lg focus:ring-2 focus:ring-primary/20 p-3 text-sm placeholder:text-outline/60" placeholder="e.g. Acme Corp Inc." type="text"/>
+</div>
+<div>
+<label class="block text-[10px] uppercase tracking-widest font-bold text-on-surface-variant mb-2">Billing Email Address</label>
+<input class="w-full bg-surface-container-low border border-surface-container-highest rounded-lg focus:ring-2 focus:ring-primary/20 p-3 text-sm placeholder:text-outline/60" placeholder="accounting@client.com" type="email"/>
+</div>
+<div>
+<label class="block text-[10px] uppercase tracking-widest font-bold text-on-surface-variant mb-2">Full Billing Address</label>
+<textarea class="w-full bg-surface-container-low border border-surface-container-highest rounded-lg focus:ring-2 focus:ring-primary/20 p-3 text-sm placeholder:text-outline/60" placeholder="Street, City, Country, ZIP" rows="3"></textarea>
+</div>
+</div>
+<div class="flex items-center gap-4 pt-4">
+<button class="flex-1 py-3 text-sm font-bold text-on-surface-variant hover:bg-surface-container-low rounded-lg transition-colors border border-surface-container-highest" onclick="document.getElementById('new-client-modal').classList.add('hidden')" type="button">
+                        Cancel
+                    </button>
+<button class="flex-[2] py-3 text-sm font-bold bg-primary text-white rounded-lg hover:bg-primary/90 hover:shadow-lg transition-all active:scale-95 shadow-primary/20" type="submit">
+                        Save Client Profile
+                    </button>
+</div>
+</form>
+</div>
+</div>
+</body></html>

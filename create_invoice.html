@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Create Invoice - Invoicer</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "inverse-primary": "#ffb598",
+              "secondary-container": "#fc9a73",
+              "on-error": "#ffffff",
+              "surface-variant": "#f7ddd4",
+              "outline-variant": "#e2bfb2",
+              "error-container": "#ffdad6",
+              "on-tertiary-fixed-variant": "#00497a",
+              "error": "#ba1a1a",
+              "secondary-fixed-dim": "#ffb599",
+              "surface-dim": "#eed5cb",
+              "tertiary-container": "#0079c4",
+              "tertiary": "#005f9d",
+              "on-surface": "#261913",
+              "on-background": "#261913",
+              "outline": "#8e7166",
+              "on-error-container": "#93000a",
+              "secondary": "#954827",
+              "on-primary-fixed": "#370e00",
+              "on-tertiary": "#ffffff",
+              "surface-container-high": "#fde3d9",
+              "surface-container-highest": "#f7ddd4",
+              "on-tertiary-container": "#fdfcff",
+              "on-secondary-fixed": "#370e00",
+              "inverse-surface": "#3c2d27",
+              "primary": "#a13a00",
+              "on-primary": "#ffffff",
+              "surface-container-lowest": "#ffffff",
+              "surface-container-low": "#fff1ec",
+              "on-secondary": "#ffffff",
+              "surface-tint": "#a53c00",
+              "background": "#fff8f6",
+              "on-secondary-fixed-variant": "#773212",
+              "on-secondary-container": "#753011",
+              "surface-bright": "#fff8f6",
+              "primary-fixed-dim": "#ffb598",
+              "on-primary-container": "#fffbff",
+              "on-surface-variant": "#5a4138",
+              "on-primary-fixed-variant": "#7e2c00",
+              "on-tertiary-fixed": "#001d35",
+              "primary-container": "#ca4b00",
+              "secondary-fixed": "#ffdbce",
+              "inverse-on-surface": "#ffede7",
+              "surface": "#fff8f6",
+              "surface-container": "#ffe9e1",
+              "primary-fixed": "#ffdbce",
+              "tertiary-fixed": "#d0e4ff",
+              "tertiary-fixed-dim": "#9ccaff"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background font-body text-on-background">
+<!-- SideNavBar (Shared Component) -->
+<aside class="bg-slate-900 dark:bg-black h-screen w-64 fixed left-0 top-0 border-r border-slate-800 shadow-xl flex flex-col h-full p-4 z-50">
+<div class="mb-8 px-4">
+<h1 class="text-xl font-black text-white">Invoicer</h1>
+<p class="font-manrope text-sm font-medium text-slate-400">SaaS Dashboard</p>
+</div>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-white transition-colors hover:bg-slate-800 rounded-lg" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-manrope text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-orange-600 text-white rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-manrope text-sm font-medium">Invoices</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-white transition-colors hover:bg-slate-800 rounded-lg" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-manrope text-sm font-medium">Clients</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-white transition-colors hover:bg-slate-800 rounded-lg" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-manrope text-sm font-medium">Settings</span>
+</a>
+</nav>
+<div class="mt-auto px-4 py-4 border-t border-slate-800">
+<div class="flex items-center gap-3">
+<img alt="User profile" class="w-10 h-10 rounded-full" data-alt="Corporate professional user profile headshot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtuChL-8DVWkzmiZnkppxcUAJ-wc8uqi20dx3hlAYxWjRc6aQ9fuk3BMXwniG8yATlqr2jxH15PlNbdp0nwsn3EvZw0TKAHMHPB-e-b91tN9xyhqsTquLJBCxKi-j0Xiwmgyc1ugq-oRolmRrz19anJGSCo-VZhR-ApDrCRL_XTQ62HnUn5OAzmbYorlTGSDaaWaIJhb2p5o6nVkAGfg2Q79n987qK815uv0T0L9ae9DiIx6HnYYh-r0XZ-K6-lSRQTeMukvY0_T4"/>
+<div>
+<p class="text-sm font-bold text-white">Alex Rivera</p>
+<p class="text-xs text-slate-500 font-medium">Premium Plan</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- TopNavBar (Shared Component) -->
+<header class="fixed top-0 right-0 left-64 h-16 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 z-40">
+<div class="flex justify-between items-center px-8 w-full h-full">
+<div class="flex items-center flex-1">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-full py-2 pl-10 pr-4 text-sm focus:ring-2 focus:ring-primary/20" placeholder="Search invoices, clients..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex gap-4">
+<button class="text-slate-500 dark:text-slate-400 hover:text-orange-500 dark:hover:text-orange-400 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-slate-500 dark:text-slate-400 hover:text-orange-500 dark:hover:text-orange-400 transition-colors">
+<span class="material-symbols-outlined">help</span>
+</button>
+</div>
+<div class="h-8 w-px bg-slate-200 dark:border-slate-800"></div>
+<div class="flex items-center gap-3">
+<img alt="User Avatar" class="w-8 h-8 rounded-full" data-alt="User Avatar Small" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOJRRyAPDeNBRamVhWk0CIgA3SKUjNtfCtQy-VUL4sYQjcVVn8P3mgvhxfcVC40631zWExXnJe2feB-sCLcNovucRCpjnMDQxttKI2X2DQnk1uIAMTM4iNSHj_Ub05mQPHdES_t1O8bRIdku_aS5fnsLdDf2WvQ8Mx2asENTbFqNdGc0PgFVg8ljpi7H3aDEK6_9rTr9di9NvF57UfzfFOEgkzRirnWefW3j86kbeUZACAJdasA-JOuaYHdm7OyYnLO01Hyrwz4r0"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-16 min-h-screen p-8 bg-surface-bright">
+<div class="max-w-5xl mx-auto">
+<!-- Breadcrumbs & Actions -->
+<div class="flex justify-between items-end mb-8">
+<div>
+<nav class="flex text-sm font-medium text-on-surface-variant mb-2 gap-2">
+<span>Invoices</span>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<span class="text-primary">Create New Invoice</span>
+</nav>
+<h2 class="text-3xl font-headline font-extrabold text-on-surface tracking-tight">Create Invoice</h2>
+</div>
+<div class="flex gap-3">
+<button class="px-6 py-2.5 rounded-lg border-2 border-primary text-primary font-bold text-sm hover:bg-primary/5 transition-all">
+                        Preview
+                    </button>
+<button class="px-6 py-2.5 rounded-lg bg-primary text-white font-bold text-sm shadow-lg shadow-primary/20 hover:bg-primary-container transition-all">
+                        Generate Invoice
+                    </button>
+</div>
+</div>
+<!-- Bento Form Layout -->
+<div class="grid grid-cols-12 gap-6">
+<!-- Client Details Section -->
+<section class="col-span-12 lg:col-span-8 bg-surface-container-lowest rounded-xl p-8 border border-outline-variant/30 shadow-sm">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">person</span>
+<h3 class="font-headline font-bold text-lg text-on-surface">Client Information</h3>
+</div>
+<div class="grid grid-cols-2 gap-6">
+<div class="col-span-2 md:col-span-1 space-y-2">
+<label class="block text-sm font-semibold text-on-surface-variant">Client Name</label>
+<input class="w-full bg-surface-container border border-outline-variant/50 rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" placeholder="e.g. Acme Corp" type="text"/>
+</div>
+<div class="col-span-2 md:col-span-1 space-y-2">
+<label class="block text-sm font-semibold text-on-surface-variant">Email Address</label>
+<input class="w-full bg-surface-container border border-outline-variant/50 rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" placeholder="billing@acme.com" type="email"/>
+</div>
+<div class="col-span-2 space-y-2">
+<label class="block text-sm font-semibold text-on-surface-variant">Billing Address</label>
+<textarea class="w-full bg-surface-container border border-outline-variant/50 rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" placeholder="123 Business Way, Suite 400, New York, NY" rows="3"></textarea>
+</div>
+</div>
+</section>
+<!-- Invoice Meta Section -->
+<section class="col-span-12 lg:col-span-4 bg-surface-container-highest/40 rounded-xl p-8 border border-outline-variant/30 shadow-sm">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">calendar_today</span>
+<h3 class="font-headline font-bold text-lg text-on-surface">Invoice Details</h3>
+</div>
+<div class="space-y-5">
+<div class="space-y-2">
+<label class="block text-sm font-semibold text-on-surface-variant">Invoice #</label>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant font-bold">INV-</span>
+<input class="w-full bg-white border border-outline-variant/50 rounded-lg pl-14 pr-4 py-3 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" type="text" value="2024-001"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="block text-sm font-semibold text-on-surface-variant">Issue Date</label>
+<input class="w-full bg-white border border-outline-variant/50 rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" type="date"/>
+</div>
+<div class="space-y-2">
+<label class="block text-sm font-semibold text-on-surface-variant">Due Date</label>
+<input class="w-full bg-white border border-outline-variant/50 rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" type="date"/>
+</div>
+</div>
+</section>
+<!-- Line Items Table Section -->
+<section class="col-span-12 bg-surface-container-lowest rounded-xl overflow-hidden border border-outline-variant/30 shadow-sm">
+<div class="p-8 pb-4">
+<div class="flex justify-between items-center mb-6">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">list_alt</span>
+<h3 class="font-headline font-bold text-lg text-on-surface">Line Items</h3>
+</div>
+<button class="flex items-center gap-2 text-primary font-bold text-sm px-4 py-2 hover:bg-primary/5 rounded-lg transition-colors">
+<span class="material-symbols-outlined text-base">add_circle</span>
+                                Add Row
+                            </button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant text-xs font-bold uppercase tracking-wider">
+<th class="px-8 py-4">Description</th>
+<th class="px-4 py-4 w-24 text-center">Qty</th>
+<th class="px-4 py-4 w-40 text-right">Price</th>
+<th class="px-8 py-4 w-40 text-right">Total</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/20">
+<tr>
+<td class="px-8 py-6">
+<input class="w-full bg-transparent border-none p-0 focus:ring-0 font-medium" placeholder="Item description" type="text" value="UX/UI Design Retainer - Monthly"/>
+</td>
+<td class="px-4 py-6">
+<input class="w-full bg-surface-container-low border-none rounded py-1 px-2 text-center" type="number" value="1"/>
+</td>
+<td class="px-4 py-6">
+<div class="flex items-center justify-end gap-1">
+<span class="text-on-surface-variant">$</span>
+<input class="w-24 bg-surface-container-low border-none rounded py-1 px-2 text-right" type="text" value="2,500.00"/>
+</div>
+</td>
+<td class="px-8 py-6 text-right font-bold text-on-surface">
+                                        $2,500.00
+                                    </td>
+</tr>
+<tr>
+<td class="px-8 py-6">
+<input class="w-full bg-transparent border-none p-0 focus:ring-0 font-medium" placeholder="Item description" type="text" value="Additional Revision Cycles"/>
+</td>
+<td class="px-4 py-6">
+<input class="w-full bg-surface-container-low border-none rounded py-1 px-2 text-center" type="number" value="2"/>
+</td>
+<td class="px-4 py-6">
+<div class="flex items-center justify-end gap-1">
+<span class="text-on-surface-variant">$</span>
+<input class="w-24 bg-surface-container-low border-none rounded py-1 px-2 text-right" type="text" value="150.00"/>
+</div>
+</td>
+<td class="px-8 py-6 text-right font-bold text-on-surface">
+                                        $300.00
+                                    </td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- Summary Section -->
+<div class="col-span-12 lg:col-start-8 lg:col-span-5 mt-4">
+<div class="bg-primary/5 rounded-2xl p-8 border-2 border-primary/10">
+<div class="space-y-4">
+<div class="flex justify-between items-center text-on-surface-variant font-medium">
+<span>Subtotal</span>
+<span>$2,800.00</span>
+</div>
+<div class="flex justify-between items-center text-on-surface-variant font-medium">
+<div class="flex items-center gap-2">
+<span>Tax</span>
+<span class="bg-primary/10 text-primary text-[10px] px-2 py-0.5 rounded font-bold">8.5%</span>
+</div>
+<span>$238.00</span>
+</div>
+<div class="h-px bg-primary/20 my-4"></div>
+<div class="flex justify-between items-center">
+<span class="font-headline font-extrabold text-xl text-on-surface">Total Amount</span>
+<span class="font-headline font-extrabold text-2xl text-primary">$3,038.00</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Notes Section -->
+<div class="col-span-12 lg:col-span-7 mt-4">
+<div class="bg-surface-container-low rounded-xl p-8">
+<label class="block text-sm font-bold text-on-surface mb-3">Additional Notes</label>
+<textarea class="w-full bg-white border border-outline-variant/30 rounded-lg p-4 text-sm focus:ring-2 focus:ring-primary focus:border-transparent outline-none" placeholder="Payment terms, bank details, or a thank you message..." rows="4"></textarea>
+</div>
+</div>
+</div>
+<!-- Mobile Navigation Anchor (Shared Component Logic) -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 flex justify-around py-3 px-4 z-50">
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-bold">Dash</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-orange-600" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">description</span>
+<span class="text-[10px] font-bold">Invoices</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-[10px] font-bold">Clients</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-bold">Settings</span>
+</a>
+</nav>
+</div>
+</main>
+</body></html>
